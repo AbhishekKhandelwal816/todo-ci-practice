@@ -1,0 +1,10 @@
+services:
+  db:
+    image: mongo:6
+    ports:
+      - "27018:27017"
+    volumes:
+      - test-mongo-data:/data/db
+
+volumes:
+  test-mongo-data:

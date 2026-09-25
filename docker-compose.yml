@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    container_name: todo-compose-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - MONGO_URL=mongodb://db:27017/todos
+
+  db:
+    image: mongo:6
+    container_name: todo-compose-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - todo-mongo-data:/data/db
+
+volumes:
+  todo-mongo-data:
+    external: true
